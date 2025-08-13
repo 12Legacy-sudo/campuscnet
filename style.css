@@ -1,0 +1,129 @@
+/* ===== Theme Tokens ===== */
+:root{
+  --bg: #0b1220;
+  --surface: rgba(255,255,255,0.06);
+  --glass: rgba(255,255,255,0.12);
+  --text: #e9eefc;
+  --muted:#9fb0d7;
+  --brand:#4f8cff;
+  --brand2:#8a7cff;
+  --ring: rgba(79,140,255,0.35);
+}
+:root.light{
+  --bg:#f7f9ff;
+  --surface: rgba(0,0,0,0.04);
+  --glass: rgba(255,255,255,0.9);
+  --text:#0b1220;
+  --muted:#51618e;
+  --brand:#1e66ff;
+  --brand2:#6a5cff;
+  --ring: rgba(30,102,255,0.25);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Inter, Arial;
+  color:var(--text);
+  background:
+    radial-gradient(1100px 600px at 15% -10%, #1a2a6c 0%, transparent 45%),
+    radial-gradient(900px 560px at 110% 8%, #b21f1f 0%, transparent 50%),
+    linear-gradient(0deg, var(--bg), var(--bg));
+  background-attachment: fixed;
+  transition: background .4s ease, color .4s ease;
+}
+
+/* ===== App Bar ===== */
+.appbar{
+  position: sticky; top:0; z-index:20;
+  display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:12px;
+  padding:10px 14px;
+  background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: saturate(140%) blur(14px);
+}
+.brand{display:flex; align-items:center; gap:10px}
+.mark{width:32px; height:32px; display:grid; place-items:center; border-radius:12px; background:linear-gradient(135deg,var(--brand),var(--brand2)); box-shadow:0 10px 28px rgba(0,0,0,.25)}
+.logotype{font-weight:800; letter-spacing:.3px}
+
+/* ===== Omnibox ===== */
+.omnibox{
+  display:flex; align-items:center; gap:8px;
+  background: var(--glass); border:1px solid rgba(255,255,255,0.22);
+  padding:8px; border-radius:9999px;
+}
+.omnibox input{
+  flex:1; background:transparent; border:none; color:var(--text);
+  padding:6px 8px; outline:none; font-size:15px;
+}
+.omnibox button{
+  background:linear-gradient(135deg,var(--brand),var(--brand2));
+  border:none; color:#fff; padding:6px 12px; border-radius:9999px; cursor:pointer; font-weight:700;
+}
+
+/* ===== Actions ===== */
+.actions{display:flex; align-items:center; gap:8px}
+.pill{
+  background:transparent; border:1px solid rgba(255,255,255,0.25);
+  color:var(--text); padding:8px 12px; border-radius:9999px; cursor:pointer; font-weight:700;
+}
+.pill:hover{background:rgba(255,255,255,0.09)}
+
+/* ===== Tabs ===== */
+.tabs{padding:10px 12px; overflow:auto}
+.tabs ul{list-style:none; display:flex; gap:10px; padding:0; margin:0}
+.tab{
+  display:inline-block; padding:10px 16px; border-radius:9999px; text-decoration:none; color:var(--text);
+  background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.16); transition: all .2s ease;
+}
+.tab:hover{transform:translateY(-1px); background:rgba(255,255,255,0.12)}
+.tab.active{background:linear-gradient(135deg,var(--brand),var(--brand2)); color:#fff; border-color:transparent}
+
+/* ===== Shell / Panels ===== */
+.shell{max-width:1100px; margin:0 auto; padding:10px 16px 80px}
+.panel{
+  background:var(--glass); border:1px solid rgba(255,255,255,0.16); border-radius:18px; padding:18px;
+  box-shadow:0 20px 70px rgba(0,0,0,0.25);
+}
+.hero{margin-top:6px}
+.hero h1{margin:0 0 6px}
+.hero p{margin:0 0 10px; color:var(--muted)}
+.chips{display:flex; gap:8px; flex-wrap:wrap}
+.chip{border:1px solid rgba(255,255,255,0.25); background:rgba(255,255,255,0.07); color:var(--text); padding:8px 14px; border-radius:9999px; font-weight:700}
+.chip:hover{background:rgba(255,255,255,0.12)}
+
+/* ===== Grid / Cards ===== */
+.grid{display:grid; grid-template-columns: repeat(12, 1fr); gap:14px; margin-top:14px; opacity:0; transition:opacity .35s ease}
+.card{
+  grid-column: span 4;
+  background:var(--glass); border:1px solid rgba(255,255,255,0.16); border-radius:18px; overflow:hidden;
+  box-shadow:0 14px 60px rgba(0,0,0,0.25); transition: transform .2s ease, box-shadow .2s ease;
+}
+.card:hover{transform:translateY(-2px); box-shadow:0 18px 80px rgba(0,0,0,0.35)}
+.card .meta{display:flex; align-items:center; gap:8px; padding:12px}
+.card .title{padding:0 12px 10px; font-weight:800}
+.card .body{padding:0 12px 12px; color:var(--muted)}
+.row{display:flex; align-items:center; gap:10px; padding:12px}
+.btn{border:1px solid rgba(255,255,255,0.25); background:transparent; color:var(--text); padding:8px 12px; border-radius:9999px; cursor:pointer; font-weight:700}
+.btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand2)); border:none; color:#fff}
+
+@media (max-width: 980px){ .card{grid-column: span 6} }
+@media (max-width: 640px){
+  .omnibox{display:none} /* small screens: use command palette */
+  .card{grid-column: span 12}
+}
+
+/* ===== Command Palette ===== */
+.cmdk{position:fixed; inset:0; background:rgba(5,10,20,.60); display:grid; place-items:start center; padding-top:10vh}
+.cmdk.hidden{display:none}
+.cmdk-box{width:min(720px,92vw); background:var(--glass); border:1px solid rgba(255,255,255,0.25); border-radius:18px; padding:10px; box-shadow:0 40px 120px rgba(0,0,0,.45)}
+#cmdInput{width:100%; padding:12px 14px; border-radius:9999px; border:1px solid rgba(255,255,255,0.25); background:rgba(255,255,255,0.06); color:var(--text); outline:none}
+#cmdResults{list-style:none; margin:8px 0 0; padding:0; max-height:50vh; overflow:auto}
+#cmdResults li{padding:10px 12px; border-radius:12px}
+#cmdResults li[aria-selected="true"]{background:rgba(255,255,255,0.12); outline:2px solid rgba(255,255,255,0.18)}
+.cmdk-hint{color:var(--muted); font-size:12px; padding:8px 2px; text-align:right}
+
+/* ===== Footer ===== */
+.foot{padding:28px 16px; text-align:center; color:var(--muted)}
+.hidden{display:none}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CampusCNet — Social • Business • Explore • Personal</title>
+  <link rel="icon" href="data:," />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Top Bar -->
+  <header class="appbar">
+    <div class="brand">
+      <div class="mark" aria-hidden="true">🎓</div>
+      <div class="logotype">CampusCNet</div>
+    </div>
+
+    <!-- Omnibox (Resources / Explore) -->
+    <form id="omniboxForm" class="omnibox" role="search" aria-label="Global Search">
+      <input id="omnibox" type="search" placeholder="Search people, posts, projects, jobs, papers…" autocomplete="off" />
+      <button type="submit" aria-label="Search">↵</button>
+    </form>
+
+    <!-- Actions -->
+    <div class="actions">
+      <button id="themeBtn" class="pill" title="Toggle Light/Dark">🌗</button>
+      <button id="cmdBtn" class="pill" title="Command Palette (Ctrl/⌘ K)">⌘K</button>
+      <a id="loginBtn" class="pill" href="#">Login</a>
+    </div>
+  </header>
+
+  <!-- Tabs (no hamburger; scrollable pills) -->
+  <nav class="tabs" aria-label="Primary">
+    <ul>
+      <li><a href="#" class="tab active" data-zone="home">🏠 Home</a></li>
+      <li><a href="#" class="tab" data-zone="socialFun">✨ Social + Fun</a></li>
+      <li><a href="#" class="tab" data-zone="businessOpen">🚀 Business + Open Source</a></li>
+      <li><a href="#" class="tab" data-zone="explore">🔎 Exploration & Findings</a></li>
+      <li><a href="#" class="tab" data-zone="personal">🧭 Personal Space</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Shell -->
+  <main class="shell">
+    <section class="hero panel" id="hero">
+      <h1>Welcome to the next-gen campus network</h1>
+      <p>Open, social, and business-ready — designed for what netizens love today and will love for years.</p>
+      <div class="chips">
+        <button class="chip pill" data-jump="socialFun">Jump to Social + Fun</button>
+        <button class="chip pill" data-jump="businessOpen">See Business + Open Source</button>
+        <button class="chip pill" data-jump="explore">Explore & Find</button>
+        <button class="chip pill" data-jump="personal">Open Personal Space</button>
+      </div>
+    </section>
+
+    <!-- Dynamic content goes here -->
+    <section id="content" class="grid" aria-live="polite"></section>
+  </main>
+
+  <!-- Command Palette -->
+  <div id="cmdPalette" class="cmdk hidden" role="dialog" aria-modal="true" aria-label="Command Palette">
+    <div class="cmdk-box">
+      <input type="text" id="cmdInput" placeholder="Type a command or search…" />
+      <ul id="cmdResults"></ul>
+      <div class="cmdk-hint">Enter to select • Esc to close</div>
+    </div>
+  </div>
+
+  <footer class="foot">
+    <p>© <span id="year"></span> CampusCNet — Social • Business • Explore • Personal</p>
+  </footer>
+
+  <script src="script.js"></script>
+
+  
+</body>
+</html>
